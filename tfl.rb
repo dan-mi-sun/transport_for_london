@@ -33,9 +33,8 @@ class Journey
   #
   def display_lines
     @lines = Tube.new.lines.keys
-    binding.pry
-    output_lines = @lines.map { |line| line }
-    puts "Which of these following lines would you like to travel on: #{@lines}"
+    @all_lines = @lines.join(", ")
+    puts "You can choose from the following lines: #{@all_lines}"
   end
 
   def get_start_line
