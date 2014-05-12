@@ -2,8 +2,6 @@ require 'pry-byebug'
 
 class TubeLine
   
-  attr_accessor :list_all_stations 
-
   #1. Define suitable data structures for the underground lines and stations.
   #
   def initialize
@@ -11,29 +9,25 @@ class TubeLine
   
   end
 
-  #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
-  #
+
+end
+
+class Journey
+  
+  attr_accessor :list_all_stations 
+  attr_accessor :get_start_line
+  attr_accessor :get_end_line
+  attr_accessor :get_start_station
+  attr_accessor :get_end_station
+
   def list_all_stations(tube_line)
     tube_line.each do
       print tube_line[n]
     end
   end
 
-  def tfl_journey_planner
-    get_start_line
-    get_start_station
-    get_end_line
-    get_end_station
-  end
-end
-
-class Journey
-  
-  attr_accessor :get_start_line
-  attr_accessor :get_end_line
-  attr_accessor :get_start_station
-  attr_accessor :get_end_station
-
+  #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
+  #
   def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
     @start_line = gets.strip.chomp
@@ -60,5 +54,13 @@ class Journey
     @end_station = gets.strip.chomp
   end
 
+  def tfl_journey_planner
+    get_start_line
+    get_start_station
+    get_end_line
+    get_end_station
+  end
+
 end
-TubeLine.new.tfl_journey_planner
+
+Journey.new.tfl_journey_planner
