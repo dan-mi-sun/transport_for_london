@@ -33,6 +33,7 @@ class Journey
   def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
     @start_line = gets.strip.chomp
+    list_all_stations(@start_line.lowercase)
   end
 
   #3. Add code to allow the user to select a starting station.
