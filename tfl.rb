@@ -20,14 +20,30 @@ class TubeLine
     end
   end
 
-  def begin_program
+  def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
+    @start_line = gets.strip.chomp
   end
 
   #3. Add code to allow the user to select a starting station.
   #
   def get_start_station
+    "Which station are you starting at?"
     @start_station = gets.strip.chomp
+  end
+
+  #4. Add code to prompt the user for an ending line.
+  #
+  def get_end_line
+    puts "What tube line will you end on?"
+    @end_line = gets.strip.chomp
+  end
+
+  #5. Add code to prompt the user for an ending station.
+  #
+  def get_end_station
+    puts "What station do you want to travel to?"
+    @end_station = gets.strip.chomp
   end
 
 end
