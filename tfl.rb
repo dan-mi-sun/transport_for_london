@@ -25,10 +25,15 @@ class Journey
 
   #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
   #
+  def display_lines
+    @lines = TubeLine.new
+    binding.pry
+    puts "Which of these following lines would you like to travel on: #{@lines}"
+  end
+
   def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
     @start_line = gets.strip.chomp
-    list_all_stations(@start_line.lowercase)
   end
 
   def list_all_stations(tube_line)
@@ -59,6 +64,7 @@ class Journey
   end
 
   def tfl_journey_planner
+    display_lines
     get_start_line
     get_start_station
     get_end_line
