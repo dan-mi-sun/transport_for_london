@@ -7,8 +7,7 @@ class TubeLine
   #1. Define suitable data structures for the underground lines and stations.
   #
   def initialize
-  @victoria = ["Kings Cross", "Euston", "Warren Street", "Oxford Circus", "Green Park", "Victoria", "Pimlico"]
-  
+  lines = { victoria => [:kings_cross, :euston, :warren_street, :oxford_circus, :green_park, :victoria, :pimlico] }
   end
 
 
