@@ -74,6 +74,7 @@ class Journey
   def tfl_journey_planner
     display_lines
     get_start_line
+    display_stations(@start_line)
     get_start_station
     get_end_line
     get_end_station
