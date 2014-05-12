@@ -41,13 +41,13 @@ class Journey
     puts "Hello commuter. What line would you like to travel on?"
     @start = []
     @start_line = gets.strip.chomp
-    @start << @start_line
   end
 
   def list_all_stations(tube_line)
-    tube_line.each do
-      print tube_line[n]
-    end
+    binding.pry
+    @all_stations = Tube.new.lines[tube_line.to_sym] 
+    @list_of_stations = @all_stations.join(", ")
+    puts "These are the stations on that line: #{@list_of_stations}"
   end
 
   #3. Add code to allow the user to select a starting station.
@@ -74,7 +74,7 @@ class Journey
   def tfl_journey_planner
     display_lines
     get_start_line
-    display_stations(@start_line)
+    list_all_stations(@start_line)
     get_start_station
     get_end_line
     get_end_station
