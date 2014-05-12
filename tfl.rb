@@ -2,7 +2,11 @@ require 'pry-byebug'
 
 class TubeLine
   
-  attr_accessor :station
+  attr_accessor :list_all_stations 
+  attr_accessor :get_start_line
+  attr_accessor :get_end_line
+  attr_accessor :get_start_station
+  attr_accessor :get_end_station
 
   #1. Define suitable data structures for the underground lines and stations.
   #
@@ -45,6 +49,8 @@ class TubeLine
     puts "What station do you want to travel to?"
     @end_station = gets.strip.chomp
   end
+
+
 
 end
 
