@@ -39,7 +39,9 @@ class Journey
 
   def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
+    @start = []
     @start_line = gets.strip.chomp
+    @start << @start_line
   end
 
   def list_all_stations(tube_line)
