@@ -22,11 +22,6 @@ class Journey
   attr_accessor :get_start_station
   attr_accessor :get_end_station
 
-  def list_all_stations(tube_line)
-    tube_line.each do
-      print tube_line[n]
-    end
-  end
 
   #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
   #
@@ -34,6 +29,12 @@ class Journey
     puts "Hello commuter. What line would you like to travel on?"
     @start_line = gets.strip.chomp
     list_all_stations(@start_line.lowercase)
+  end
+
+  def list_all_stations(tube_line)
+    tube_line.each do
+      print tube_line[n]
+    end
   end
 
   #3. Add code to allow the user to select a starting station.
