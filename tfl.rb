@@ -1,15 +1,22 @@
 require 'pry-byebug'
 
-class TubeLine
+class Tube
 
-  attr_accessor :victoria
+  attr_accessor :lines
   
   #1. Define suitable data structures for the underground lines and stations.
   #
   def initialize
-  lines = { victoria => [:kings_cross, :euston, :warren_street, :oxford_circus, :green_park, :victoria, :pimlico] }
-  end
+    self.lines = { 
+      
+      :victoria => [:kings_cross, :euston, :warren_street, :oxford_circus, :green_park, :victoria, :pimlico], 
+      
+      :bakerloo => [:elephant_castle, :lambeth_north, :waterloo, :embankment, :charing_cross, :picadilly_circus, :oxford_circus, :regents_park, :baker_street], 
+      
+      :central => [:notting_hill_gate, :queensway, :lancaster_gate, :marble_arch, :bond_street, :oxford_circus, :tottenham_court_road, :holborn, :chancery_lane] 
+    }
 
+  end
 
 end
 
@@ -25,8 +32,9 @@ class Journey
   #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
   #
   def display_lines
-    @lines = TubeLine.new
+    @lines = Tube.new.lines.keys
     binding.pry
+    output_lines = @lines.map { |line| line }
     puts "Which of these following lines would you like to travel on: #{@lines}"
   end
 
