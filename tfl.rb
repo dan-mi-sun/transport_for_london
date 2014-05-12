@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class TubeLine
   
   attr_accessor :station
@@ -21,4 +23,13 @@ class TubeLine
   def begin_program
     puts "Hello commuter. What line would you like to travel on?"
   end
+
+  #3. Add code to allow the user to select a starting station.
+  #
+  def get_start_station
+    @start_station = gets.strip.chomp
+  end
+
 end
+
+TubeLine.new
