@@ -35,7 +35,7 @@ class Journey
 
   #3. Add code to allow the user to select a starting station.
   #
-  def get_start_station
+  def get_start_station(start_line)
     "Which station are you starting at?"
     @start_station = gets.strip.chomp
   end
@@ -49,7 +49,7 @@ class Journey
 
   #5. Add code to prompt the user for an ending station.
   #
-  def get_end_station
+  def get_end_station(end_line)
     puts "What station do you want to travel to?"
     @end_station = gets.strip.chomp
   end
