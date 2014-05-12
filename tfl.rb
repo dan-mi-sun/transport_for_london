@@ -49,9 +49,13 @@ class TubeLine
     puts "What station do you want to travel to?"
     @end_station = gets.strip.chomp
   end
-
-
-
+  
+  def tfl_journey_planner
+    get_start_line
+    get_start_station
+    get_end_line
+    get_end_station
+  end
 end
 
-TubeLine.new
+TubeLine.new.tfl_journey_planner
