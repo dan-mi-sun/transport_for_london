@@ -1,6 +1,8 @@
 require 'pry-byebug'
 
 class TubeLine
+
+  attr_accessor :victoria
   
   #1. Define suitable data structures for the underground lines and stations.
   #
