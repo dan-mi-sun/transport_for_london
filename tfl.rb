@@ -62,8 +62,8 @@ class Journey
   #4. Add code to prompt the user for an ending line.
   #
   def get_end_line
-    puts "What tube line will you end on?"
-    @end_line = gets.strip.chomp
+    puts "\nWhat tube line will you end on?"
+    @end_line = gets.strip.chomp.downcase
   end
 
   #5. Add code to prompt the user for an ending station.
