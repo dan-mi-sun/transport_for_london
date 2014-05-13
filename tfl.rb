@@ -49,7 +49,7 @@ class Journey
     @list_of_stations = @all_stations.join(", ")
     @print_list_of_stations = @list_of_stations.gsub("_", " ")
     @title_list_of_stations = @print_list_of_stations.split.map(&:capitalize).join(" ")
-    puts "\nThese are the stations on that line: #{@title_list_of_stations}"
+    puts "\nThese are the stations on that line: \n\n#{@title_list_of_stations}"
   end
 
   #3. Add code to allow the user to select a starting station.
