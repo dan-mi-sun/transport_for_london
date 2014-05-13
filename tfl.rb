@@ -35,7 +35,7 @@ class Journey
     @lines = Tube.new.lines.keys
     @all_lines = @lines.join(", ")
     @title_list_lines = @all_lines.split.map(&:capitalize).join(" ")
-    puts "You can choose from the following lines: #{@title_list_lines}"
+    puts "\nYou can choose from the following lines: #{@title_list_lines}"
   end
 
   def get_start_line
@@ -78,6 +78,7 @@ class Journey
     get_start_line
     list_all_stations(@start_line)
     get_start_station
+    display_lines
     get_end_line
     get_end_station
   end
