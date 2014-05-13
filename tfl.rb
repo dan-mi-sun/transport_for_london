@@ -69,8 +69,8 @@ class Journey
   #5. Add code to prompt the user for an ending station.
   #
   def get_end_station(end_line)
-    puts "What station do you want to travel to?"
-    @end_station = gets.strip.chomp
+    puts "\nWhich station is you end destination?"
+    @end_station = gets.strip.chomp.downcase
   end
 
   def tfl_journey_planner
@@ -80,7 +80,7 @@ class Journey
     get_start_station
     display_lines
     get_end_line
-    get_end_station
+    get_end_station(@end_line)
   end
 
 end
