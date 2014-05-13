@@ -34,7 +34,8 @@ class Journey
   def display_lines
     @lines = Tube.new.lines.keys
     @all_lines = @lines.join(", ")
-    puts "You can choose from the following lines: #{@all_lines}"
+    @title_list_lines = @all_lines.split.map(&:capitalize).join(" ")
+    puts "You can choose from the following lines: #{@title_list_lines}"
   end
 
   def get_start_line
@@ -44,10 +45,11 @@ class Journey
   end
 
   def list_all_stations(tube_line)
-    binding.pry
     @all_stations = Tube.new.lines[tube_line.to_sym] 
     @list_of_stations = @all_stations.join(", ")
-    puts "These are the stations on that line: #{@list_of_stations}"
+    @print_list_of_stations = @list_of_stations.gsub("_", " ") #TODO iterate through each word and capitalize
+    @title_list_of_stations = @print_list_of_stations.split.map(&:capitalize).join(" ")
+    puts "These are the stations on that line: #{@title_list_of_stations}"
   end
 
   #3. Add code to allow the user to select a starting station.
