@@ -41,13 +41,13 @@ class Journey
   def get_start_line
     puts "Hello commuter. What line would you like to travel on?"
     @start = []
-    @start_line = gets.strip.chomp
+    @start_line = gets.strip.chomp.downcase
   end
 
   def list_all_stations(tube_line)
     @all_stations = Tube.new.lines[tube_line.to_sym] 
     @list_of_stations = @all_stations.join(", ")
-    @print_list_of_stations = @list_of_stations.gsub("_", " ") #TODO iterate through each word and capitalize
+    @print_list_of_stations = @list_of_stations.gsub("_", " ")
     @title_list_of_stations = @print_list_of_stations.split.map(&:capitalize).join(" ")
     puts "These are the stations on that line: #{@title_list_of_stations}"
   end
@@ -56,7 +56,7 @@ class Journey
   #
   def get_start_station(start_line)
     "Which station are you starting at?"
-    @start_station = gets.strip.chomp
+    @start_station = gets.strip.chomp.downcase
   end
 
   #4. Add code to prompt the user for an ending line.
