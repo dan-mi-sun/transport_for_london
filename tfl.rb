@@ -71,9 +71,9 @@ class Journey
     puts "\nWhich station is your end destination?"
     @end_station = gets.strip.chomp.downcase
   end
-
-  #6. Print out the number of stops between the two stations.
-  #
+    
+    #7. Print out the actual station stops between the two stations on the screen.
+    #
   def print_stations_en_route
     #get start station, get end station, create an array with these stations and stations between, print length of array 
     #Using the start staion value I want to get the index of hash array
@@ -98,16 +98,26 @@ class Journey
     #Use end station symbol to find index of station
     #
     @end_index = @one_d_array_of_stations.find_index(@end_station_sym)
+    #Use index of start and finish to calculate number of stops en route
+    #
+    @number_of_stops = ((@end_index.to_i - @start_index.to_i) + 1)
+
+    puts "\nThere are #{@number_of_stops} stations till your final destination"
     #Use indexes to print stations between and including
     #
     @stations_en_route = @one_d_array_of_stations.slice(@start_index..@end_index)
     #Generate list and make print print ready
     #
     @print_stations_en_route = @stations_en_route.join(", ").gsub("_", " ").split.map(&:capitalize).join(" ")
-    puts @print_stations_en_route
-    binding.pry
 
+    puts "\nThe stations en route are #{@print_stations_en_route}"
+    
   end
+
+    #6. Print out the number of stops between the two stations.
+    #
+    def calculate_number_stops
+    end
 
   def tfl_journey_planner
     display_lines
