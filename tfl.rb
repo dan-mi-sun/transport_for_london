@@ -40,7 +40,6 @@ class Journey
 
   def get_start_line
     puts "\nHello commuter. What line would you like to travel on?"
-    @start = []
     @start_line = gets.strip.chomp.downcase
   end
 
@@ -68,9 +67,46 @@ class Journey
 
   #5. Add code to prompt the user for an ending station.
   #
-  def get_end_station(end_line)
-    puts "\nWhich station is you end destination?"
+  def get_end_station
+    puts "\nWhich station is your end destination?"
     @end_station = gets.strip.chomp.downcase
+  end
+
+  #6. Print out the number of stops between the two stations.
+  #
+  def print_stations_en_route
+    #get start station, get end station, create an array with these stations and stations between, print length of array 
+    #Using the start staion value I want to get the index of hash array
+    #
+    @start_station_sym = @start_station.gsub(" ", "_").to_sym
+    #Using the end staion value I want to get the index of hash array
+    #
+    @end_station_sym = @end_station.gsub(" ", "_").to_sym
+    #convert line to sym
+    #
+    @start_line_sym = @start_line.to_sym
+    #Return an array for selected line:
+    #
+    @two_d_array_of_stations_on_start_line = Tube.new.lines.values_at(@start_line_sym)
+    if @start_line_sym == :victoria
+      @start_line_sym_index = 0
+    end
+    @one_d_array_of_stations = @two_d_array_of_stations_on_start_line[@start_line_sym_index]
+    #Use start station symbol to find index of station
+    #
+    @start_index = @one_d_array_of_stations.find_index(@start_station_sym) 
+    #Use end station symbol to find index of station
+    #
+    @end_index = @one_d_array_of_stations.find_index(@end_station_sym)
+    #Use indexes to print stations between and including
+    #
+    @stations_en_route = @one_d_array_of_stations.slice(@start_index..@end_index)
+    #Generate list and make print print ready
+    #
+    @print_stations_en_route = @stations_en_route.join(", ").gsub("_", " ").split.map(&:capitalize).join(" ")
+    puts @print_stations_en_route
+    binding.pry
+
   end
 
   def tfl_journey_planner
@@ -80,7 +116,8 @@ class Journey
     get_start_station
     display_lines
     get_end_line
-    get_end_station(@end_line)
+    get_end_station
+    print_stations_en_route
   end
 
 end
