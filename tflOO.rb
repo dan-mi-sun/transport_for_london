@@ -76,7 +76,6 @@ class Journey
     #7. Print out the actual station stops between the two stations on the screen.
     #
   def print_stations_en_route
-    #get start station, get end station, create an array with these stations and stations between, print length of array 
     #Using the start staion value I want to get the index of hash array
     #
     start_station_sym = @start_station.gsub(" ", "_").to_sym
@@ -101,7 +100,7 @@ class Journey
     end_index = one_d_array_of_stations.find_index(end_station_sym)
     #Use index of start and finish to calculate number of stops en route
     #
-    number_of_stops = ((end_index.to_i - start_index.to_i) + 1)
+    number_of_stops = ((end_index.to_i - start_index.to_i).abs + 1)
 
     puts "\nThere are #{number_of_stops} stations till your final destination"
     #Use indexes to print stations between and including
