@@ -45,12 +45,10 @@ class Journey
 
   #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
   #
-
   def get_start_line
     puts "\nHello commuter. What line would you like to travel on?"
     @start_line = gets.strip.chomp.downcase
   end
-
 
   #3. Add code to allow the user to select a starting station.
   #
@@ -63,7 +61,7 @@ class Journey
   #
   def get_end_line
     puts "\nWhat tube line will you end on?"
-    end_line = gets.strip.chomp.downcase
+    @end_line = gets.strip.chomp.downcase
   end
 
   #5. Add code to prompt the user for an ending station.
@@ -85,12 +83,20 @@ class Journey
     #convert line to sym
     #
     start_line_sym = @start_line.to_sym
+
+    end_line_sym = @end_line.to_sym
     #Return an array for selected line:
     #
     two_d_array_of_stations_on_start_line = Tube.new.lines.values_at(start_line_sym)
+
     if start_line_sym == :victoria
       start_line_sym_index = 0
+    elsif start_line_sym == :bakerloo
+      start_line_sym_index = 0
+    elsif start_line_sym == :central
+      start_line_sym_index = 0
     end
+
     one_d_array_of_stations = two_d_array_of_stations_on_start_line[start_line_sym_index]
     #Use start station symbol to find index of station
     #
@@ -100,6 +106,7 @@ class Journey
     end_index = one_d_array_of_stations.find_index(end_station_sym)
     #Use index of start and finish to calculate number of stops en route
     #
+
     number_of_stops = ((end_index.to_i - start_index.to_i).abs + 1)
 
     puts "\nThere are #{number_of_stops} stations till your final destination"
