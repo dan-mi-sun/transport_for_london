@@ -74,21 +74,15 @@ class Journey
     #7. Print out the actual station stops between the two stations on the screen.
     #
   def print_stations_en_route
-    #Using the start staion value I want to get the index of hash array
-    #
+
     start_station_sym = @start_station.gsub(" ", "_").to_sym
-    #Using the end staion value I want to get the index of hash array
-    #
+
     end_station_sym = @end_station.gsub(" ", "_").to_sym
-    #convert line to sym
-    #
+
     start_line_sym = @start_line.to_sym
 
     end_line_sym = @end_line.to_sym
-    #Return an array for selected line:
-    #
-    two_d_array_of_stations_on_start_line = Tube.new.lines.values_at(start_line_sym)
-
+    
     if start_line_sym == :victoria
       start_line_sym_index = 0
     elsif start_line_sym == :bakerloo
@@ -97,32 +91,59 @@ class Journey
       start_line_sym_index = 0
     end
 
-    one_d_array_of_stations = two_d_array_of_stations_on_start_line[start_line_sym_index]
-    #Use start station symbol to find index of station
-    #
-    start_index = one_d_array_of_stations.find_index(start_station_sym) 
-    #Use end station symbol to find index of station
-    #
-    end_index = one_d_array_of_stations.find_index(end_station_sym)
-    #Use index of start and finish to calculate number of stops en route
-    #
-
-    number_of_stops = ((end_index.to_i - start_index.to_i).abs + 1)
-
-    puts "\nThere are #{number_of_stops} stations till your final destination"
-    #Use indexes to print stations between and including
-    #
-    stations_en_route = one_d_array_of_stations.slice(start_index..end_index)
-    #Generate list and make print print ready
-    #
-    print_stations_en_route = stations_en_route.join(", ").gsub("_", " ").split.map(&:capitalize).join(" ")
-
-    puts "\nThe stations en route are #{print_stations_en_route}"
+    stations_on_start_line = Tube.new.lines.values_at(start_line_sym)
+    stations_on_end_line = Tube.new.lines.values_at(end_line_sym)
     
+    stations_start = stations_on_start_line[start_line_sym_index]
+
+    start_index = stations_start.find_index(start_station_sym) 
+
+    if start_line_sym != end_line_sym
+
+      intersection = (stations_on_start_line[0] & stations_on_end_line[0])[0] 
+
+      start_int_index = stations_on_start_line[0].index(intersection)
+      stops_between = (start_index.to_i - start_int_index.to_i).abs 
+
+      end_index = stations_on_end_line[0].find_index(end_station_sym)
+
+      end_int_index = stations_on_end_line[0].index(intersection)
+      between = (end_index.to_i - end_int_index.to_i).abs
+
+      stations_on_first = stations_on_start_line[0][start_index, (start_int_index - 1)]
+      stations_on_second = stations_on_end_line[0][end_int_index, (end_index + 1)]
+
+      number_of_stops = (end_index - start_index).abs
+
+      puts "\nThere are #{number_of_stops} stations till your final destination"
+
+      stations_en_route = stations_on_first + stations_on_second
+      
+      print_stations_en_route = stations_en_route.join(", ").gsub("_", " ").split.map(&:capitalize).join(" ")
+
+      puts "\nThe stations en route are #{print_stations_en_route}"
+
+    else
+
+      end_index = stations_start.find_index(end_station_sym)
+
+      number_of_stops = ((end_index.to_i - start_index.to_i).abs + 1)
+
+      puts "\nThere are #{number_of_stops} stations till your final destination"
+      #Use indexes to print stations between and including
+      #
+      stations_en_route = stations_start.slice(start_index..end_index)
+      #Generate list and make print print ready
+      #
+      print_stations_en_route = stations_en_route.join(", ").gsub("_", " ").split.map(&:capitalize).join(" ")
+
+      puts "\nThe stations en route are #{print_stations_en_route}"
+
+    end
   end
 
-    #6. Print out the number of stops between the two stations.
-    #
+  #6. Print out the number of stops between the two stations.
+  #
 
   def tfl_journey_planner
     Tube.display_lines
