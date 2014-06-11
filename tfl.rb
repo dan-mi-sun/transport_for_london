@@ -18,16 +18,25 @@ class Tube
 
   end
 
+  #Which methods are specific to the Tube?
+  #display_lines
+
+end
+
+class Station
+  
+  # def station_name_to_sym(station)
+  #   station.gsub("_", " ").to_sym
+  # end
+  # What methods are specific to a station?
+  # list_all_stations
+  #
+
 end
 
 class Journey
   
   attr_accessor :list_all_stations 
-  # attr_accessor :get_start_line
-  # attr_accessor :get_end_line
-  # attr_accessor :get_start_station
-  # attr_accessor :get_end_station
-
 
   #2. Create a text-based program that prompts the user for their starting line, then prints out the stations available to choose from.
   #
